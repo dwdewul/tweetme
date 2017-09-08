@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+  Tweets
+{% endblock %}
+{% block content %}
+{% if tweets %}
+  {% for tweet in tweets %}
+    <p>Content: {{tweet.text}}</p>
+  {% endfor %}
+{% else %}
+  <h1>No Posts</h1>
+{% endif %}
+
+{% endblock %}
