@@ -5,7 +5,9 @@
 {% block content %}
 {% if tweets %}
   {% for tweet in tweets %}
+    <p>ID: {{tweet.id}} -- Author: {{tweet.user}}</p>
     <p>Content: {{tweet.text}}</p>
+    <br>
   {% endfor %}
 {% else %}
   <h1>No Posts</h1>
