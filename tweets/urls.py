@@ -1,7 +1,8 @@
 from django.conf.urls import url
-from .views import tweet_list_view, tweet_detail_view
+from .views import TweetListView, TweetDetailView, TweetCreateView
 
 urlpatterns = [
-    url(r'^$', tweet_list_view, name='list_view'),
-    url(r'^1/$', tweet_list_view, name='detail_view'),
+    url(r'^$', TweetListView.as_view(), name='list_view'),
+    url(r'^(?P<pk>\d+)/$', TweetDetailView.as_view(), name='detail_view'),
+    url(r'^create/$', TweetCreateView.as_view(), name='create_view'),
 ]

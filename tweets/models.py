@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.shortcuts import reverse
 
 # Create your models here.
 class Tweet(models.Model):
@@ -9,4 +10,7 @@ class Tweet(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return str(self.id)
+        return "{} -- {}".format(self.text, self.user.id)
+
+    def get_absolute_url(self):
+        return reverse('tweets:detail_view', args=[self.id])
