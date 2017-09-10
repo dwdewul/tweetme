@@ -3,14 +3,29 @@
   Tweets
 {% endblock %}
 {% block content %}
-{% if tweets %}
-  {% for tweet in tweets %}
-    <p>ID: {{tweet.id}} -- Author: {{tweet.user}}</p>
-    <p>Content: {{tweet.text}}</p>
-    <br>
-  {% endfor %}
-{% else %}
-  <h1>No Posts</h1>
-{% endif %}
-
+<br>
+<div class="row">
+  {% if tweets %}
+    {% for tweet in tweets %}
+    <div class="cold-md-6 text-center">
+      <div class="media">
+        <div class="media-left">
+          <a href="#">
+            <img src="http://via.placeholder.com/120x120" alt="..." class="media-object">
+          </a>
+        </div>
+        <div class="media-body">
+          <div class="media-heading">
+            {{tweet.text}}
+          </div>
+          By: {{tweet.user}} | {{tweet.timestamp}} | <a href="{{ tweet.get_absolute_url }}">View</a>
+        </div>
+      </div>
+    </div>
+    <hr>
+    {% endfor %}
+  {% else %}
+    <h1>No Posts</h1>
+  {% endif %}
+</div>
 {% endblock %}
