@@ -24,6 +24,7 @@
         crossorigin="anonymous">
       </script>
       <link rel="icon" href="{% static 'favicon.ico' %}">
+      <link rel="stylesheet" href="{% static 'css/master.css' %}">
   </head>
   <body>
     <nav class="navbar navbar-inverse">
@@ -53,19 +54,12 @@
             </ul>
           </li>
         </ul>
-        {% url 'tweets:list_view' as tweet_url %}
-        {% if request.get_full_path == tweet_url %}
           <form class="navbar-form navbar-right" action="{% url 'tweets:list_view' %}" method="GET">
               <div class="form-group">
                 <input type="text" name="q" placeholder="Search for a tweet..." class="form-control">
               </div>
               <button type="submit" class="btn btn-default">Submit</button>
           </form>
-        {% else %}
-          <div class="nav navbar-nav navbar-right">
-            <li><a href="{% url 'tweets:list_view' %}">All Tweets</a></li>
-          </div>
-        {% endif %}
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>

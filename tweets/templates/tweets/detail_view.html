@@ -3,9 +3,17 @@
   Single Tweet
 {% endblock %}
 {% block content %}
-  <h2>Tweet:</h2>
-  <p>{{tweet.text}}</p>
-  <p>Tweeted By: {{tweet.user}}</p>
-
-
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-sm-9 col-xs-12 card text-center">
+      <div class="card-content">
+        <h2>Tweet:</h2>
+        <p>{{tweet.text}}</p>
+      </div>
+    </div>
+    <div class="col-sm-3 col-xs-12 pull-right">
+      <p>Tweeted By: {{tweet.user}}</p>
+    </div>
+  </div>
+</div>
 {% endblock %}

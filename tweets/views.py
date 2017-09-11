@@ -24,6 +24,12 @@ class TweetListView(ListView):
             )
         return qs
 
+    def get_context_data(self, *args, **kwargs):
+        context = super(TweetListView, self).get_context_data(*args, **kwargs)
+        context['create_form'] = TweetModelForm()
+        context['create_url'] = reverse_lazy("tweets:create_view")
+        return context
+
 
 class TweetDetailView(DetailView):
     queryset = Tweet.objects.all()
@@ -36,13 +42,15 @@ class TweetCreateView(LoginRequiredMixin, CreateView):
     form_class = TweetModelForm
     template_name = "tweets/update.html"
     login_url = '/admin/login/'
+    success_url = reverse_lazy("tweets:list_view")
 
 
 class TweetUpdateView(UserOwnerMixin, UpdateView):
     model = Tweet
     form_class = TweetModelForm
-    template_name = "tweets/create.html"
+    template_name = "tweets/update.html"
     login_url = '/admin/login/'
+    success_url = reverse_lazy("tweets:list_view")
 
 
 class TweetDeleteView(LoginRequiredMixin, UserOwnerMixin, DeleteView):
