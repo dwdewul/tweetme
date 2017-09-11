@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.forms.utils import ErrorList
@@ -11,8 +12,10 @@ from .mixins import FormUserNeededMixin, UserOwnerMixin
 
 
 class TweetListView(ListView):
+    model = Tweet
     template_name = "tweets/list_view.html"
     context_object_name = 'tweets'
+    paginate_by = 4
 
     def get_queryset(self, *args, **kwargs):
         qs = Tweet.objects.all()

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <p>{{profile.username}}</p>
+  <p>{{profile.id}}</p>
+  {% for tweet in profile.tweet_set.all %}
+    <p>{{tweet.text|truncatechars:70}} | {{tweet.timestamp}}</p>
+  {% endfor %}
+
+{% endblock %}
